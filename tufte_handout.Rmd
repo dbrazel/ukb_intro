@@ -1,0 +1,47 @@
+---
+title: "An Introduction to the UK Biobank"
+author: "David Brazel"
+date: "2019-02-18"
+output:
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+# Overview
+
+The UK Biobank (UKB) is a large prospective cohort of more than 500,000 middle-aged and elderly British men and women. The UKB has quite liberal access policies and is available to any "bona fide" researcher for health-related studies. The UKB subjects were deeply phenotyped and genotyped with various follow-up assessments underway, including a death registry and the collection of medical records from the NHS. Some phenotypes were only collected on subsets of the sample (MRI scans or retinal imaging, for example).
+
+## Our Obligations
+
+* Annual progress report for each project.^[https://bit.ly/2TNcLPb]
+* Return of results to the UKB within six months of publication of twelve months of the end of the project.^[https://bit.ly/2SDD7qu] This includes:
+    + Derived variables and a description of how they were generated
+    + Scripts
+    + A copy of the final manuscript
+    + A paragraph summarizing the results, to be shared with participants
+* If a publication or presentation is "likely to provoke controversy or attract significant public attention," inform the UKB at least two weeks in advance.
+* Acknowledge that "this research has been conducted using the UK Biobank Resource" in any presentation or publication and include the project ID number.
+
+# Phenotypes
+
+# Recruitment and Assessment Process
+
+# Demographics
+
+# Genetic Data
+
+The interim release of the UKB genetic data
+
+# Practicalities
+
+

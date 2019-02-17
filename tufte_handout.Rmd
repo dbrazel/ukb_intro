@@ -3,10 +3,10 @@ title: "An Introduction to the UK Biobank"
 author: "David Brazel"
 date: "2019-02-18"
 output:
-  tufte::tufte_html: default
   tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
+  tufte::tufte_html: default
 bibliography: skeleton.bib
 link-citations: yes
 ---
@@ -89,7 +89,7 @@ This category contains regularly updated information on the participants' health
 
 # Recruitment and Assessment Process
 
-Eligible participants were aged 40-69 and lived near one of 22 assessment centres^[Edinburgh, Glasgow, Newcastle-upon-Tyne, Middlesbrough, Leeds, Bury, Manchester, Altrincham, Liverpool, Sheffield, Nottingham, Stoke-on-Trent, Birmingham, Oxford, Bristol, Reading, central London, Hounslow, Croydon, Cardiff, Swansea and Wrexham] in England, Scotland, and Wales.^[See https://www.ukbiobank.ac.uk/all-faqs/ and https://bit.ly/2Xa9SKy] The centre locations were chosen to "provide socioeconomic and ethnic heterogeneity and urban–rural mix" [@sudlow_uk_2015]. Prospective participants were identified from NHS records and other registries. They received an invitation by mail and could obtain more information through a website or by phone. 10% of those contacted enrolled in the study.
+Eligible participants were aged 40-69 and lived near one of 22 primary assessment centres^[Edinburgh, Glasgow, Newcastle-upon-Tyne, Middlesbrough, Leeds, Bury, Manchester, Altrincham, Liverpool, Sheffield, Nottingham, Stoke-on-Trent, Birmingham, Oxford, Bristol, Reading, central London, Hounslow, Croydon, Cardiff, Swansea and Wrexham] in England, Scotland, and Wales.^[See https://www.ukbiobank.ac.uk/all-faqs/ and https://bit.ly/2Xa9SKy] The centre locations were chosen to "provide socioeconomic and ethnic heterogeneity and urban–rural mix" [@sudlow_uk_2015]. Prospective participants were identified from NHS records and other registries. They received an invitation by mail and could obtain more information through a website or by phone. 10% of those contacted enrolled in the study.
 
 The initial visit to an assessment centre occurred between 2006 and 2010. A first visit to an assessment centre consisted of the following stages:^[Documented here: https://bit.ly/2S8XhTP]
 

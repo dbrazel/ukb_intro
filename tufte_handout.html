@@ -74,7 +74,7 @@ if (window.hljs) {
 </div>
 <div id="variables" class="section level1">
 <h1>Variables</h1>
-<p>This section will not be an exhaustive survey of the measures available in the UK Biobank. However, I do want to give an overview of the types of data available and where to find it. Your best bet is the Data Showcase<label for="tufte-sn-3" class="margin-toggle sidenote-number">3</label><input type="checkbox" id="tufte-sn-3" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">3</span> <a href="http://biobank.ctsu.ox.ac.uk/showcase/index.cgi" class="uri">http://biobank.ctsu.ox.ac.uk/showcase/index.cgi</a></span>, a web app that allows one to browse and search the various data categories and items and provides summary statistics and documentation for each item. When looking at a category or item of interest, be sure to click on the Resources, Notes, and Related Data-Fields tabs. Also, remember that a category can contain both sub-categories and data fields, in which case you’ll have to click on the Data-Fields tab to see them.</p>
+<p>This section will not be an exhaustive survey of the measures available in the UK Biobank. However, I do want to give an overview of the types of data available and where to find it. Your best bet is the Data Showcase,<label for="tufte-sn-3" class="margin-toggle sidenote-number">3</label><input type="checkbox" id="tufte-sn-3" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">3</span> <a href="http://biobank.ctsu.ox.ac.uk/showcase/index.cgi" class="uri">http://biobank.ctsu.ox.ac.uk/showcase/index.cgi</a></span> a web app that allows one to browse and search the various data categories and items and provides summary statistics and documentation for each item. When looking at a category or item of interest, be sure to click on the Resources, Notes, and Related Data-Fields tabs. Also, remember that a category can contain both sub-categories and data fields, in which case you’ll have to click on the Data-Fields tab to see them.</p>
 <p>I will describe the assessment waves in the next section but it is important to know that many fields will have multiple instances. This means that a field was collected at the initial visit but also at subsequent repeat assessment or imaging visits for a subset of participants. This structure can be quite useful for test-retest validity and longitudinal measurement.</p>
 <p>Now, let’s go through the primary categories.</p>
 <div id="population-characteristics" class="section level2">
@@ -155,17 +155,57 @@ if (window.hljs) {
 </div>
 <div id="demographics" class="section level1">
 <h1>Demographics</h1>
-<p>The UKB is not a representative sample: its participants are older, more female, wealthier, and healthier than the general British population <span class="citation">(Fry et al. <label for="tufte-mn-2" class="margin-toggle">&#8853;</label><input type="checkbox" id="tufte-mn-2" class="margin-toggle">2017<span class="marginnote">Fry, Anna, Thomas J Littlejohns, Cathie Sudlow, Nicola Doherty, Ligia Adamska, Tim Sprosen, Rory Collins, and Naomi E Allen. 2017. “Comparison of Sociodemographic and Health-Related Characteristics of UK Biobank Participants with the General Population.” <em>American Journal of Epidemiology</em>. doi:<a href="https://doi.org/10.1093/aje/kwx246">10.1093/aje/kwx246</a>.</span>)</span>. Future versions of this document will expand this section but I will refer you to the cited paper for now.</p>
+<p>I will expand on this section in a future version but suffice it to say that the UKB is not a representative sample: its participants are older, more female, wealthier, and healthier than Britons at large <span class="citation">(Fry et al. <label for="tufte-mn-2" class="margin-toggle">&#8853;</label><input type="checkbox" id="tufte-mn-2" class="margin-toggle">2017<span class="marginnote">Fry, Anna, Thomas J Littlejohns, Cathie Sudlow, Nicola Doherty, Ligia Adamska, Tim Sprosen, Rory Collins, and Naomi E Allen. 2017. “Comparison of Sociodemographic and Health-Related Characteristics of UK Biobank Participants with the General Population.” <em>American Journal of Epidemiology</em>. doi:<a href="https://doi.org/10.1093/aje/kwx246">10.1093/aje/kwx246</a>.</span>)</span>.</p>
 </div>
 <div id="genetic-data" class="section level1">
 <h1>Genetic Data</h1>
-<div id="genotyping-process" class="section level2">
-<h2>Genotyping process</h2>
-<p>The entire UKB sample was array genotyped but they were not all genotyped on the same array.</p>
+<div id="genotyping-arrays" class="section level2">
+<h2>Genotyping arrays</h2>
+<p>The entire UKB sample was array genotyped but not all subjects were genotyped on the same array. Two arrays were used: the UK Biobank Axiom array<label for="tufte-sn-10" class="margin-toggle sidenote-number">10</label><input type="checkbox" id="tufte-sn-10" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">10</span> The design of the array is described here: <a href="https://bit.ly/2BBKfcc" class="uri">https://bit.ly/2BBKfcc</a> but, broadly, the array is designed to efficiently impute common and low-frequency variants, assess coding variation, and include known or suspected loci.</span> and the UK BiLEVE array, both of which genotype approximately 800,000 sites. The arrays share more than 95% of their content but, critically, have differential call rates at some sites. The UK BiLEVE array was used for the first 50,000 participants to be genotyped, half of whom were heavy smokers and half of whom were never smokers <span class="citation">(Wain et al. <label for="tufte-mn-3" class="margin-toggle">&#8853;</label><input type="checkbox" id="tufte-mn-3" class="margin-toggle">2015<span class="marginnote">Wain, Louise V, Nick Shrine, Suzanne Miller, Victoria E Jackson, Ioanna Ntalla, María Soler Artigas, Charlotte K Billington, et al. 2015. “Novel Insights into the Genetics of Smoking Behaviour, Lung Function, and Chronic Obstructive Pulmonary Disease (UK BiLEVE): A Genetic Association Study in UK Biobank.” <em>The Lancet Respiratory Medicine</em> 3 (10): 769–81. doi:<a href="https://doi.org/10.1016/S2213-2600(15)00283-0">10.1016/S2213-2600(15)00283-0</a>.</span>)</span>. The other 450,000 participants were genotyped on the Axiom array. The key point is that if you are conducting a genetic study of any trait related to smoking, which includes any trait related to risk tolerance, you need to account for this confounding of phenotype and genotyping methods. One approach, in a GWAS, is to treat the two chips as separate samples.</p>
+</div>
+<div id="data-formats" class="section level2">
+<h2>Data formats</h2>
+<p>For the full release of genetic data, raw intensities, genotype calls, and imputed genotypes were provided for 488,377 subjects <span class="citation">(Bycroft et al. <label for="tufte-mn-4" class="margin-toggle">&#8853;</label><input type="checkbox" id="tufte-mn-4" class="margin-toggle">2017<span class="marginnote">Bycroft, Clare, Colin Freeman, Desislava Petkova, Gavin Band, Olivier Delaneau, Jared O Connell, Adrian Cortes, and Samantha Welsh. 2017. “Genome-Wide Genetic Data on ~500,000 UK Biobank Participants.” <em>bioRxiv</em>. doi:<a href="https://doi.org/http://dx.doi.org/10.1101/166298">http://dx.doi.org/10.1101/166298</a>.</span>)</span>. The imputed data used a reference panel composed of the HRC and the UK10K, increasing the number of variants from 800,000 to 96 million. For our applications, you are likely to work with the imputed data, which is in BGEN format.<label for="tufte-sn-11" class="margin-toggle sidenote-number">11</label><input type="checkbox" id="tufte-sn-11" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">11</span> <a href="https://bit.ly/2Gta0zH" class="uri">https://bit.ly/2Gta0zH</a></span> Many software packages still have limited or no support for bgen files and it is likely that you will have to convert file formats using the qctool package.</p>
+</div>
+<div id="genotype-batch" class="section level2">
+<h2>Genotype batch</h2>
+<p>Genotype calling was performed on groups of samples, called batches. There are a total of 106 batches in the full release. Because assessment centres opened and closed during the recruitment period, the batches are heterogeneous. Statistically significant differences exist on a number of variables, requiring the inclusion of batch as a covariate in genetic association analyses.</p>
+</div>
+<div id="relatedness-in-the-sample" class="section level2">
+<h2>Relatedness in the sample</h2>
+<p>Although the UKB was not designed as a family study, 107,162 pairs are related to the third degree or closer. 179 monozygotic twin pairs, 6,276 parent-offspring pairs, and 22,666 full sibling pairs are present in the dataset. There are also extended family groups, including one remarkable case of eleven individuals with one shared father and eleven different mothers. You will need to either remove related individuals or use methods, such as BOLT-LMM, that accommodate them.</p>
 </div>
 </div>
-<div id="practicalities" class="section level1 unnumbered">
+<div id="practicalities" class="section level1">
 <h1>Practicalities</h1>
+<div id="use-the-data-dictionary" class="section level2">
+<h2>Use the data dictionary</h2>
+<p>The files for a UKB project will include an HTML data dictionary named ukbNNNN.html where NNNN is the project ID. This file contains an inventory of all data fields included with the project, their IDs (which you need to select variables in your analyses), and hyperlinks to their pages in the Data Showcase. I often reference it while writing UKB analysis scripts.</p>
+</div>
+<div id="treat-the-data-as-immutable" class="section level2">
+<h2>Treat the data as immutable</h2>
+<p>As a general best practice, the original data should never be modified. You may, and often should, write scripts that produce quality controlled or otherwise modified versions of the original data but the original files should not be changed.</p>
+</div>
+<div id="genetic-data-should-be-kept-compressed-and-indexed" class="section level2">
+<h2>Genetic data should be kept compressed and indexed</h2>
+<p>Doing this saves space and processing time. Most software works with compressed files directly, without requiring them to be uncompressed. For tabular genetic data, your best bets are likely to be <a href="http://www.htslib.org/doc/bgzip.html">bgzip</a> for compression and <a href="http://www.htslib.org/doc/tabix.html">tabix</a> for indexing.</p>
+</div>
+<div id="script-everything" class="section level2">
+<h2>Script everything</h2>
+<p>Your analyses should never depend on a manual step or on a derived data file that you made while messing around in an R session. In two months, you won’t remember what you did or why you did it. Your analyses should be documented and reproducible and that can’t happen unless they’re scripted.</p>
+</div>
+<div id="put-your-scripts-in-version-control" class="section level2">
+<h2>Put your scripts in version control</h2>
+<p>Version control software (git is the most popular choice) maintains a record of your changes to your scripts and allows you to go back to an earlier version if necessary. Version control is useful when working alone but essential when collaborating on software with others. Learning to use git takes an hour or two and is very much worth it.<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> Here’s a list of resources: <a href="https://bit.ly/2BF3Qbr" class="uri">https://bit.ly/2BF3Qbr</a></span></p>
+</div>
+<div id="use-job-arrays-for-easy-parallelization" class="section level2">
+<h2>Use job arrays for easy parallelization</h2>
+<p>You’ll often need to run the same command, say a QC step, on many files, perhaps one VCF file per chromosome. Slurm job arrays make this dead simple, as explained <a href="https://help.it.ox.ac.uk/arc/job-scheduling#jobarrays">here</a>.</p>
+</div>
+<div id="if-possible-use-notebooks" class="section level2">
+<h2>If possible, use notebooks</h2>
+<p>Ideally, our exploratory work is also documented. The easiest way to do this is with a “notebook,” a tool that allows you to weave together prose, code, equations, and graphics into a single interactive document. R, Python (Jupyter Notebook), and Mathematica are examples of languages that support notebooks.</p>
+</div>
 </div>
 
 

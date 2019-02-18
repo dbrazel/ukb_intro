@@ -37,7 +37,7 @@ The UK Biobank (UKB) is a large prospective cohort of more than 500,000 middle-a
 
 # Variables
 
-This section will not be an exhaustive survey of the measures available in the UK Biobank. However, I do want to give an overview of the types of data available and where to find it. Your best bet is the Data Showcase^[http://biobank.ctsu.ox.ac.uk/showcase/index.cgi], a web app that allows one to browse and search the various data categories and items and provides summary statistics and documentation for each item. When looking at a category or item of interest, be sure to click on the Resources, Notes, and Related Data-Fields tabs. Also, remember that a category can contain both sub-categories and data fields, in which case you'll have to click on the Data-Fields tab to see them.
+This section will not be an exhaustive survey of the measures available in the UK Biobank. However, I do want to give an overview of the types of data available and where to find it. Your best bet is the Data Showcase,^[http://biobank.ctsu.ox.ac.uk/showcase/index.cgi] a web app that allows one to browse and search the various data categories and items and provides summary statistics and documentation for each item. When looking at a category or item of interest, be sure to click on the Resources, Notes, and Related Data-Fields tabs. Also, remember that a category can contain both sub-categories and data fields, in which case you'll have to click on the Data-Fields tab to see them.
 
 I will describe the assessment waves in the next section but it is important to know that many fields will have multiple instances. This means that a field was collected at the initial visit but also at subsequent repeat assessment or imaging visits for a subset of participants. This structure can be quite useful for test-retest validity and longitudinal measurement.
 
@@ -121,14 +121,52 @@ The procedure varied over the course of sample recruitment, with some measures a
 
 # Demographics
 
-The UKB is not a representative sample: its participants are older, more female, wealthier, and healthier than the general British population [@fry_comparison_2017]. Future versions of this document will expand this section but I will refer you to the cited paper for now.
+I will expand on this section in a future version but suffice it to say that the UKB is not a representative sample: its participants are older, more female, wealthier, and healthier than Britons at large [@fry_comparison_2017].
 
 # Genetic Data
 
-## Genotyping process
+## Genotyping arrays
 
-The entire UKB sample was array genotyped but they were not all genotyped on the same array.
+The entire UKB sample was array genotyped but not all subjects were genotyped on the same array. Two arrays were used: the UK Biobank Axiom array^[The design of the array is described here: https://bit.ly/2BBKfcc but, broadly, the array is designed to efficiently impute common and low-frequency variants, assess coding variation, and include known or suspected loci.] and the UK BiLEVE array, both of which genotype approximately 800,000 sites. The arrays share more than 95% of their content but, critically, have differential call rates at some sites. The UK BiLEVE array was used for the first 50,000 participants to be genotyped, half of whom were heavy smokers and half of whom were never smokers [@wain_novel_2015]. The other 450,000 participants were genotyped on the Axiom array. The key point is that if you are conducting a genetic study of any trait related to smoking, which includes any trait related to risk tolerance, you need to account for this confounding of phenotype and genotyping methods. One approach, in a GWAS, is to treat the two chips as separate samples.
+
+## Data formats
+
+For the full release of genetic data, raw intensities, genotype calls, and imputed genotypes were provided for 488,377 subjects [@Bycroft2017]. The imputed data used a reference panel composed of the HRC and the UK10K, increasing the number of variants from 800,000 to 96 million. For our applications, you are likely to work with the imputed data, which is in BGEN format.^[https://bit.ly/2Gta0zH] Many software packages still have limited or no support for bgen files and it is likely that you will have to convert file formats using the qctool package.
+
+## Genotype batch
+
+Genotype calling was performed on groups of samples, called batches. There are a total of 106 batches in the full release. Because assessment centres opened and closed during the recruitment period, the batches are heterogeneous. Statistically significant differences exist on a number of variables, requiring the inclusion of batch as a covariate in genetic association analyses.
+
+## Relatedness in the sample
+
+Although the UKB was not designed as a family study, 107,162 pairs are related to the third degree or closer. 179 monozygotic twin pairs, 6,276 parent-offspring pairs, and 22,666 full sibling pairs are present in the dataset. There are also extended family groups, including one remarkable case of eleven individuals with one shared father and eleven different mothers. You will need to either remove related individuals or use methods, such as BOLT-LMM, that accommodate them. 
 
 # Practicalities
 
+## Use the data dictionary
 
+The files for a UKB project will include an HTML data dictionary named ukbNNNN.html where NNNN is the project ID. This file contains an inventory of all data fields included with the project, their IDs (which you need to select variables in your analyses), and hyperlinks to their pages in the Data Showcase. I often reference it while writing UKB analysis scripts.
+
+## Treat the data as immutable
+
+As a general best practice, the original data should never be modified. You may, and often should, write scripts that produce quality controlled or otherwise modified versions of the original data but the original files should not be changed.
+
+## Genetic data should be kept compressed and indexed
+
+Doing this saves space and processing time. Most software works with compressed files directly, without requiring them to be uncompressed. For tabular genetic data, your best bets are likely to be [bgzip](http://www.htslib.org/doc/bgzip.html) for compression and [tabix](http://www.htslib.org/doc/tabix.html) for indexing.
+
+## Script everything
+
+Your analyses should never depend on a manual step or on a derived data file that you made while messing around in an R session. In two months, you won't remember what you did or why you did it. Your analyses should be documented and reproducible and that can't happen unless they're scripted.
+
+## Put your scripts in version control
+
+Version control software (git is the most popular choice) maintains a record of your changes to your scripts and allows you to go back to an earlier version if necessary. Version control is useful when working alone but essential when collaborating on software with others. Learning to use git takes an hour or two and is very much worth it.^[Here's a list of resources: https://bit.ly/2BF3Qbr]
+
+## Use job arrays for easy parallelization
+
+You'll often need to run the same command, say a QC step, on many files, perhaps one VCF file per chromosome. Slurm job arrays make this dead simple, as explained [here](https://help.it.ox.ac.uk/arc/job-scheduling#jobarrays).
+
+## If possible, use notebooks
+
+Ideally, our exploratory work is also documented. The easiest way to do this is with a "notebook," a tool that allows you to weave together prose, code, equations, and graphics into a single interactive document. R, Python (Jupyter Notebook), and Mathematica are examples of languages that support notebooks.

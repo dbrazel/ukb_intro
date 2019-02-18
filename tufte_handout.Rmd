@@ -3,10 +3,10 @@ title: "An Introduction to the UK Biobank"
 author: "David Brazel"
 date: "2019-02-18"
 output:
+  tufte::tufte_html: default
   tufte::tufte_handout:
     citation_package: natbib
     latex_engine: xelatex
-  tufte::tufte_html: default
 bibliography: skeleton.bib
 link-citations: yes
 ---
@@ -165,7 +165,7 @@ Version control software (git is the most popular choice) maintains a record of 
 
 ## Use job arrays for easy parallelization
 
-You'll often need to run the same command, say a QC step, on many files, perhaps one VCF file per chromosome. Slurm job arrays make this dead simple, as explained [here](https://help.it.ox.ac.uk/arc/job-scheduling#jobarrays).
+On the cluster, you'll often need to run the same command, say a QC step, on many files, perhaps one VCF file per chromosome. Slurm job arrays make this dead simple, as explained [here](https://help.it.ox.ac.uk/arc/job-scheduling#jobarrays).
 
 ## If possible, use notebooks
 

@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+UKB_Intro.Rproj
+
+data/
+tufte_handout.log
+tufte_handout_cache/
+
